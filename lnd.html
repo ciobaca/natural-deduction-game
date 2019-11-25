@@ -932,12 +932,12 @@ var rounding = 5;
 var fontsize = 16;
 var usefulWidth = 420;
 
-Raphael.fn.proofitem = function(x, y, proofitem, where, first) {
+Raphael.fn.proofitem = function(x, y, proofitem, where, first, depth) {
 	// where must be "inrule" or "inproof"
 	if (proofitem.type == "box") {
-		return paper.proofbox(x, y, proofitem.box, where, first);
+		return paper.proofbox(x, y, proofitem.box, where, first, depth + 1);
 	} else if (proofitem.type == "formula") {
-		var f = paper.formula(x, y, proofitem.formula, where, first, proofitem.why);
+		var f = paper.formula(x, y, proofitem.formula, where, first, proofitem.why, depth);
 		if (proofitem.why == null) {
 			first.first = 0;
 		}
@@ -953,7 +953,7 @@ Raphael.fn.proofitem = function(x, y, proofitem, where, first) {
 	}
 }
 
-Raphael.fn.proofbox = function(x, y, proofbox, where, first) {
+Raphael.fn.proofbox = function(x, y, proofbox, where, first, depth) {
 	// where must be "inrule" or "inproof"
 
 	// first is true if we haven't encountered unjustified formulae yet
@@ -968,7 +968,7 @@ Raphael.fn.proofbox = function(x, y, proofbox, where, first) {
 	var hw = 0;
 	for (var i = 0; i < proofbox.assumptions.length; ++i) {
 		var f = paper.formula(x + padding, y + padding,
-			proofbox.assumptions[i], where == "inrule" ? "inrule" : "assumption", first, null);
+			proofbox.assumptions[i], where == "inrule" ? "inrule" : "assumption", first, null, depth);
 		nodes.push(f);
 		y += f.getBBox().height + padding;
 	}
@@ -989,7 +989,7 @@ Raphael.fn.proofbox = function(x, y, proofbox, where, first) {
 	}
 	for (var i = 0; i < proofbox.contents.length; ++i) {
 		var item = paper.proofitem(x + padding, y + padding,
-			proofbox.contents[i], where, first);
+			proofbox.contents[i], where, first, depth);
 		nodes.push(item);
 		y += item.getBBox().height + padding;
 	}
@@ -1006,7 +1006,7 @@ lefttext = function(x, y, s) {
 	return paper.text(x, y, s).attr({ "text-anchor": "start", "font-size" : fontsize });
 }
 
-Raphael.fn.formula = function(x, y, form, type, first, why) {
+Raphael.fn.formula = function(x, y, form, type, first, why, depth) {
 	var cursor = "pointer";
 	var colorBack = "orange";
 	if (type == "assumption") {
@@ -1410,7 +1410,7 @@ Raphael.fn.rule = function(x, y, rule) {
 	var hw = 0;
 	var nodesHypotheses = [];
 	for (var i = 0; i < hypos.length; ++i) {
-		var f = paper.proofitem(x + padding, y + padding, hypos[i], "inrule", { first : 0 });
+		var f = paper.proofitem(x + padding, y + padding, hypos[i], "inrule", { first : 0 }, 0);
 		nodes.push(f);
 		x += f.getBBox().width + padding;
 		hw += f.getBBox().width;
@@ -1421,7 +1421,7 @@ Raphael.fn.rule = function(x, y, rule) {
 	}
 	y += height + padding + padding;
 	x = oldx;
-	var nodeConclusion = paper.formula(x + padding, y, concl, "inrule");
+	var nodeConclusion = paper.formula(x + padding, y, concl, "inrule", 0);
 	nodes.push(nodeConclusion);
 	var cw = nodeConclusion.getBBox().width;
 	var set = paper.set(nodes);
