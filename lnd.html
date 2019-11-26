@@ -22,1633 +22,1658 @@
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 
-<script type="text/javascript">
-var hypothesis1 = {
-	type: "and",
-	form1: {
-		type: "var",
-		name: "p"
-	},
-	form2: {
-		type: "and",
-		form1: {
-			type: "var",
-			name: "q"
-		},
-		form2: {
-			type: "var",
-			name: "r"
-		}
-	}
-};
-var hypothesis2 = {
-	type: "and",
-	form1: {
-		type: "var",
-		name: "s"
-	},
-	form2: {
-		type: "var",
-		name: "t"
-	}
-};
-var conclusion = {
-	type: "and",
-	form1: {
-		type: "var",
-		name: "q"
-	},
-	form2: {
-		type: "var",
-		name: "s"
-	},
-};
+	<script type="text/javascript">
+	 var hypothesis1 = {
+	     type: "and",
+	     form1: {
+		 type: "var",
+		 name: "p"
+	     },
+	     form2: {
+		 type: "and",
+		 form1: {
+		     type: "var",
+		     name: "q"
+		 },
+		 form2: {
+		     type: "var",
+		     name: "r"
+		 }
+	     }
+	 };
+	 var hypothesis2 = {
+	     type: "and",
+	     form1: {
+		 type: "var",
+		 name: "s"
+	     },
+	     form2: {
+		 type: "var",
+		 name: "t"
+	     }
+	 };
+	 var conclusion = {
+	     type: "and",
+	     form1: {
+		 type: "var",
+		 name: "q"
+	     },
+	     form2: {
+		 type: "var",
+		 name: "s"
+	     },
+	 };
 
-var mainproofbox2 = {
-	assumptions : [
-		{
-			type: "var",
-			name: "q"
-		}
-	],
-	contents: [
-		{
-			type: "formula",
-			why: null,
-			formula: {
-				type: "implies",
-				form1: {
-					type: "var",
-					name: "p"
-				},
-				form2: {
-					type: "var",
-					name: "q"
-				}
-			}
-		}
-	]
-};
+	 var mainproofbox2 = {
+	     assumptions : [
+		 {
+		     type: "var",
+		     name: "q"
+		 }
+	     ],
+	     contents: [
+		 {
+		     type: "formula",
+		     why: null,
+		     formula: {
+			 type: "implies",
+			 form1: {
+			     type: "var",
+			     name: "p"
+			 },
+			 form2: {
+			     type: "var",
+			     name: "q"
+			 }
+		     }
+		 }
+	     ]
+	 };
 
-var example1 = {
-	assumptions : [
-		{
-			type: "and",
-			form1: {
-				type: "var",
-				name: "p"
-			},
-			form2: {
-				type: "var",
-				name: "q"
-			}
-		},
-		{
-			type: "var",
-			name: "r"
-		}
-	],
-	contents: [
-		{
-			type: "formula",
-			why: null,
-			formula: {
-				type: "and",
-				form1: {
-					type: "var",
-					name: "q"
-				},
-				form2: {
-					type: "var",
-					name: "r"
-				}
-			}
-		}
-	]
+	 var example1 = {
+	     assumptions : [
+		 {
+		     type: "and",
+		     form1: {
+			 type: "var",
+			 name: "p"
+		     },
+		     form2: {
+			 type: "var",
+			 name: "q"
+		     }
+		 },
+		 {
+		     type: "var",
+		     name: "r"
+		 }
+	     ],
+	     contents: [
+		 {
+		     type: "formula",
+		     why: null,
+		     formula: {
+			 type: "and",
+			 form1: {
+			     type: "var",
+			     name: "q"
+			 },
+			 form2: {
+			     type: "var",
+			     name: "r"
+			 }
+		     }
+		 }
+	     ]
 
-};
+	 };
 
-var example2 = {
-	assumptions : [
-		{
-			type: "and",
-			form1: {
-				type: "var",
-				name: "p"
-			},
-			form2: {
-				type: "var",
-				name: "q"
-			}
-		},
-		{
-			type: "var",
-			name: "r"
-		}
-	],
-	contents: [
-		{
-			type: "formula",
-			why: null,
-			formula: {
-				type: "and",
-				form1: {
-					type: "var",
-					name: "q"
-				},
-				form2: {
-					type: "var",
-					name: "r"
-				}
-			}
-		}
-	]
-};
+	 var example2 = {
+	     assumptions : [
+		 {
+		     type: "and",
+		     form1: {
+			 type: "var",
+			 name: "p"
+		     },
+		     form2: {
+			 type: "var",
+			 name: "q"
+		     }
+		 },
+		 {
+		     type: "var",
+		     name: "r"
+		 }
+	     ],
+	     contents: [
+		 {
+		     type: "formula",
+		     why: null,
+		     formula: {
+			 type: "and",
+			 form1: {
+			     type: "var",
+			     name: "q"
+			 },
+			 form2: {
+			     type: "var",
+			     name: "r"
+			 }
+		     }
+		 }
+	     ]
+	 };
 
-var example3 = {
-	assumptions : [
-		{
-			type: "var",
-			name: "p"
-		},
-		{
-			type: "not",
-			form1: {
-				type: "not",
-				form1: {
-					type: "and",
-					form1: {
-						type: "var",
-						name: "q"
-					},
-					form2: {
-						type: "var",
-						name: "r"
-					}
-				}
-			}
-		}
-	],
-	contents: [
-		{
-			type: "formula",
-			why: null,
-			formula: {
-				type: "and",
-				form1: {
-					type: "not",
-					form1: {
-						type: "not",
-						form1: {
-							type: "var",
-							name: "p"
-						}
-					}
-				},
-				form2: {
-					type: "var",
-					name: "r"
-				}
-			}
-		}
-	]
-};
+	 var example3 = {
+	     assumptions : [
+		 {
+		     type: "var",
+		     name: "p"
+		 },
+		 {
+		     type: "not",
+		     form1: {
+			 type: "not",
+			 form1: {
+			     type: "and",
+			     form1: {
+				 type: "var",
+				 name: "q"
+			     },
+			     form2: {
+				 type: "var",
+				 name: "r"
+			     }
+			 }
+		     }
+		 }
+	     ],
+	     contents: [
+		 {
+		     type: "formula",
+		     why: null,
+		     formula: {
+			 type: "and",
+			 form1: {
+			     type: "not",
+			     form1: {
+				 type: "not",
+				 form1: {
+				     type: "var",
+				     name: "p"
+				 }
+			     }
+			 },
+			 form2: {
+			     type: "var",
+			     name: "r"
+			 }
+		     }
+		 }
+	     ]
+	 };
 
-var example4 = {
-	assumptions: [
-		hypothesis1,
-		hypothesis2
-	],
-	contents: [
-		{
-			type: "formula",
-			why: null,
-			formula: conclusion
-		}
-	]
-};
+	 var example4 = {
+	     assumptions: [
+		 hypothesis1,
+		 hypothesis2
+	     ],
+	     contents: [
+		 {
+		     type: "formula",
+		     why: null,
+		     formula: conclusion
+		 }
+	     ]
+	 };
 
-function piff(formula) {
-	return {
-		type: "formula",
-		why: null,
-		formula: formula
-	}
-}
+	 function piff(formula) {
+	     return {
+		 type: "formula",
+		 why: null,
+		 formula: formula
+	     }
+	 }
 
-function cand(form1, form2) {
-	return {
-		type: "and",
-		form1: form1,
-		form2: form2
-	}
-}
+	 function cand(form1, form2) {
+	     return {
+		 type: "and",
+		 form1: form1,
+		 form2: form2
+	     }
+	 }
 
-function cor(form1, form2) {
-	return {
-		type: "or",
-		form1: form1,
-		form2: form2
-	}
-}
+	 function cor(form1, form2) {
+	     return {
+		 type: "or",
+		 form1: form1,
+		 form2: form2
+	     }
+	 }
 
-function cimpl(form1, form2) {
-	return {
-		type: "implies",
-		form1: form1,
-		form2: form2
-	}
-}
+	 function cimpl(form1, form2) {
+	     return {
+		 type: "implies",
+		 form1: form1,
+		 form2: form2
+	     }
+	 }
 
-function cnot(form1) {
-	return {
-		type: "not",
-		form1: form1,
-	}
-}
+	 function cnot(form1) {
+	     return {
+		 type: "not",
+		 form1: form1,
+	     }
+	 }
 
-function cbot(form1) {
-	return {
-		type: "bot",
-	}
-}
+	 function cbot(form1) {
+	     return {
+		 type: "bot",
+	     }
+	 }
 
-function cmv(name) {
-	return {
-		type: "metavar",
-		name: name
-	}
-}
+	 function cmv(name) {
+	     return {
+		 type: "metavar",
+		 name: name
+	     }
+	 }
 
-function cv(name) {
-	return {
-		type: "var",
-		name: name
-	}
-}
+	 function cv(name) {
+	     return {
+		 type: "var",
+		 name: name
+	     }
+	 }
 
-var example5 = {
-	assumptions: [
-		cv("p"),
-		cimpl(cv("p"), cv("q")),
-		cimpl(cv("p"), cimpl(cv("q"), cv("r")))
-	],
-	contents: [
-		piff(cv("r"))
-	]
-};
+	 var example5 = {
+	     assumptions: [
+		 cv("p"),
+		 cimpl(cv("p"), cv("q")),
+		 cimpl(cv("p"), cimpl(cv("q"), cv("r")))
+	     ],
+	     contents: [
+		 piff(cv("r"))
+	     ]
+	 };
 
-var example6 = {
-	assumptions: [
-		cimpl(cv("p"), cimpl(cv("q"), cv("r"))),
-		cv("p"),
-		cnot(cv("r"))
-	],
-	contents: [
-		piff(cnot(cv("q")))
-	]
-};
+	 var example6 = {
+	     assumptions: [
+		 cimpl(cv("p"), cimpl(cv("q"), cv("r"))),
+		 cv("p"),
+		 cnot(cv("r"))
+	     ],
+	     contents: [
+		 piff(cnot(cv("q")))
+	     ]
+	 };
 
-var example7 = {
-	assumptions: [
-		cimpl(cnot(cv("p")), cv("q")),
-		cnot(cv("q"))
-	],
-	contents: [
-		piff(cv("p"))
-	]
-};
+	 var example7 = {
+	     assumptions: [
+		 cimpl(cnot(cv("p")), cv("q")),
+		 cnot(cv("q"))
+	     ],
+	     contents: [
+		 piff(cv("p"))
+	     ]
+	 };
 
-var example8 = {
-	assumptions: [
-		cimpl(cv("p"), cnot(cv("q"))),
-		cv("q")
-	],
-	contents: [
-		piff(cnot(cv("p")))
-	]
-};
+	 var example8 = {
+	     assumptions: [
+		 cimpl(cv("p"), cnot(cv("q"))),
+		 cv("q")
+	     ],
+	     contents: [
+		 piff(cnot(cv("p")))
+	     ]
+	 };
 
-var example9 = {
-	assumptions: [
-		cimpl(cv("p"), cv("q"))
-	],
-	contents: [
-		piff(cimpl(cnot(cv("q")), cnot(cv("p"))))
-	]
-};
+	 var example9 = {
+	     assumptions: [
+		 cimpl(cv("p"), cv("q"))
+	     ],
+	     contents: [
+		 piff(cimpl(cnot(cv("q")), cnot(cv("p"))))
+	     ]
+	 };
 
-var example10 = {
-	assumptions: [
-		cimpl(cnot(cv("q")), cnot(cv("p")))
-	],
-	contents: [
-		piff(cimpl(cv("p"), cnot(cnot(cv("q")))))
-	]
-};
+	 var example10 = {
+	     assumptions: [
+		 cimpl(cnot(cv("q")), cnot(cv("p")))
+	     ],
+	     contents: [
+		 piff(cimpl(cv("p"), cnot(cnot(cv("q")))))
+	     ]
+	 };
 
-var example11 = {
-	assumptions: [
-		cv("p")
-	],
-	contents: [
-		piff(cv("p"))
-	]
-};
+	 var example11 = {
+	     assumptions: [
+		 cv("p")
+	     ],
+	     contents: [
+		 piff(cv("p"))
+	     ]
+	 };
 
-var example12 = {
-	assumptions: [
-	],
-	contents: [
-		piff(cimpl(cv("p"), cv("p")))
-	]
-};
+	 var example12 = {
+	     assumptions: [
+	     ],
+	     contents: [
+		 piff(cimpl(cv("p"), cv("p")))
+	     ]
+	 };
 
-var example13 = {
-	assumptions: [
-	],
-	contents: [
-		piff(
-			cimpl(
-				cimpl(cv("q"), cv("r")),
-				cimpl(
-					cimpl(cnot(cv("q")), cnot(cv("p"))),
-					cimpl(cv("p"), cv("q"))))
-		)
-	]
-};
+	 var example13 = {
+	     assumptions: [
+	     ],
+	     contents: [
+		 piff(
+		     cimpl(
+			 cimpl(cv("q"), cv("r")),
+			 cimpl(
+			     cimpl(cnot(cv("q")), cnot(cv("p"))),
+			     cimpl(cv("p"), cv("q"))))
+		 )
+	     ]
+	 };
 
-var example14 = {
-	assumptions: [
-		cimpl(cand(cv("p"), cv("q")), cv("r"))
-	],
-	contents: [
-		piff(cimpl(cv("p"), cimpl(cv("q"), cv("r"))))
-	]
-};
+	 var example14 = {
+	     assumptions: [
+		 cimpl(cand(cv("p"), cv("q")), cv("r"))
+	     ],
+	     contents: [
+		 piff(cimpl(cv("p"), cimpl(cv("q"), cv("r"))))
+	     ]
+	 };
 
-var example15 = {
-	assumptions: [
-		cimpl(cv("p"), cimpl(cv("q"), cv("r")))
-	],
-	contents: [
-		piff(cimpl(cand(cv("p"), cv("q")), cv("r")))
-	]
-};
+	 var example15 = {
+	     assumptions: [
+		 cimpl(cv("p"), cimpl(cv("q"), cv("r")))
+	     ],
+	     contents: [
+		 piff(cimpl(cand(cv("p"), cv("q")), cv("r")))
+	     ]
+	 };
 
-var example16 = {
-	assumptions: [
-		cimpl(cv("p"), cv("q"))
-	],
-	contents: [
-		piff(cimpl(cand(cv("p"), cv("r")), cand(cv("q"), cv("r"))))
-	]
-};
+	 var example16 = {
+	     assumptions: [
+		 cimpl(cv("p"), cv("q"))
+	     ],
+	     contents: [
+		 piff(cimpl(cand(cv("p"), cv("r")), cand(cv("q"), cv("r"))))
+	     ]
+	 };
 
-var example17 = {
-	assumptions: [
-		cor(cv("p"), cv("q"))
-	],
-	contents: [
-		piff(cor(cv("q"), cv("p")))
-	]
-};
+	 var example17 = {
+	     assumptions: [
+		 cor(cv("p"), cv("q"))
+	     ],
+	     contents: [
+		 piff(cor(cv("q"), cv("p")))
+	     ]
+	 };
 
-var example18 = {
-	assumptions: [
-		cimpl(cv("q"), cv("r"))
-	],
-	contents: [
-		piff(cimpl(cor(cv("p"), cv("q")), cor(cv("p"), cv("r"))))
-	]
-};
+	 var example18 = {
+	     assumptions: [
+		 cimpl(cv("q"), cv("r"))
+	     ],
+	     contents: [
+		 piff(cimpl(cor(cv("p"), cv("q")), cor(cv("p"), cv("r"))))
+	     ]
+	 };
 
-var example19 = {
-	assumptions: [
-		cor(cor(cv("p"), cv("q")), cv("r"))
-	],
-	contents: [
-		piff(cor(cv("p"), cor(cv("q"), cv("r"))))
-	]
-};
+	 var example19 = {
+	     assumptions: [
+		 cor(cor(cv("p"), cv("q")), cv("r"))
+	     ],
+	     contents: [
+		 piff(cor(cv("p"), cor(cv("q"), cv("r"))))
+	     ]
+	 };
 
-var example20 = {
-	assumptions: [
-		cand(cv("p"), cor(cv("q"), cv("r")))		
-	],
-	contents: [
-		piff(cor(cand(cv("p"), cv("q")), cand(cv("p"), cv("r"))))
-	]
-};
+	 var example20 = {
+	     assumptions: [
+		 cand(cv("p"), cor(cv("q"), cv("r")))		
+	     ],
+	     contents: [
+		 piff(cor(cand(cv("p"), cv("q")), cand(cv("p"), cv("r"))))
+	     ]
+	 };
 
-var example21 = {
-	assumptions: [
-		cor(cand(cv("p"), cv("q")), cand(cv("p"), cv("r")))
-	],
-	contents: [
-		piff(cand(cv("p"), cor(cv("q"), cv("r"))))
-	]
-};
+	 var example21 = {
+	     assumptions: [
+		 cor(cand(cv("p"), cv("q")), cand(cv("p"), cv("r")))
+	     ],
+	     contents: [
+		 piff(cand(cv("p"), cor(cv("q"), cv("r"))))
+	     ]
+	 };
 
-var example22 = {
-	assumptions: [
-	],
-	contents: [
-		piff(cimpl(cv("p"), cimpl(cv("q"), cv("p"))))
-	]
-};
+	 var example22 = {
+	     assumptions: [
+	     ],
+	     contents: [
+		 piff(cimpl(cv("p"), cimpl(cv("q"), cv("p"))))
+	     ]
+	 };
 
-var example23 = {
-	assumptions: [
-		cor(cnot(cv("p")), cv("q"))
-	],
-	contents: [
-		piff(cimpl(cv("p"), cv("q")))
-	]
-};
+	 var example23 = {
+	     assumptions: [
+		 cor(cnot(cv("p")), cv("q"))
+	     ],
+	     contents: [
+		 piff(cimpl(cv("p"), cv("q")))
+	     ]
+	 };
 
-var example24 = {
-	assumptions: [
-		cimpl(cv("p"), cv("q")),
-		cimpl(cv("p"), cnot(cv("q")))
-	],
-	contents: [
-		piff(cnot(cv("p")))
-	]
-};
+	 var example24 = {
+	     assumptions: [
+		 cimpl(cv("p"), cv("q")),
+		 cimpl(cv("p"), cnot(cv("q")))
+	     ],
+	     contents: [
+		 piff(cnot(cv("p")))
+	     ]
+	 };
 
-var example25 = {
-	assumptions: [
-		cimpl(cv("p"), cnot(cv("p")))
-	],
-	contents: [
-		piff(cnot(cv("p")))
-	]
-};
+	 var example25 = {
+	     assumptions: [
+		 cimpl(cv("p"), cnot(cv("p")))
+	     ],
+	     contents: [
+		 piff(cnot(cv("p")))
+	     ]
+	 };
 
-var example26 = {
-	assumptions: [
-		cimpl(cv("p"), cimpl(cv("q"), cv("r"))),
-		cv("p"),
-		cnot(cv("r"))
-	],
-	contents: [
-		piff(cnot(cv("q")))
-	]
-};
+	 var example26 = {
+	     assumptions: [
+		 cimpl(cv("p"), cimpl(cv("q"), cv("r"))),
+		 cv("p"),
+		 cnot(cv("r"))
+	     ],
+	     contents: [
+		 piff(cnot(cv("q")))
+	     ]
+	 };
 
-var example27 = {
-	assumptions: [
-		cimpl(cand(cv("p"), cnot(cv("q"))), cv("r")),
-		cnot(cv("r")),
-		cv("p"),
-	],
-	contents: [
-		piff(cv("q"))
-	]
-};
+	 var example27 = {
+	     assumptions: [
+		 cimpl(cand(cv("p"), cnot(cv("q"))), cv("r")),
+		 cnot(cv("r")),
+		 cv("p"),
+	     ],
+	     contents: [
+		 piff(cv("q"))
+	     ]
+	 };
 
-var example28 = {
-	assumptions: [
-		cimpl(cv("p"), cv("q")),
-		cnot(cv("q"))
-	],
-	contents: [
-		piff(cnot(cv("p")))
-	]
-};
+	 var example28 = {
+	     assumptions: [
+		 cimpl(cv("p"), cv("q")),
+		 cnot(cv("q"))
+	     ],
+	     contents: [
+		 piff(cnot(cv("p")))
+	     ]
+	 };
 
-var example29 = {
-	assumptions: [
-		cv("p")
-	],
-	contents: [
-		piff(cnot(cnot(cv("p"))))
-	]
-};
+	 var example29 = {
+	     assumptions: [
+		 cv("p")
+	     ],
+	     contents: [
+		 piff(cnot(cnot(cv("p"))))
+	     ]
+	 };
 
-var example30 = {
-	assumptions: [
-		cimpl(cnot(cv("p")), cbot())
-	],
-	contents: [
-		piff(cv("p"))
-	]
-};
+	 var example30 = {
+	     assumptions: [
+		 cimpl(cnot(cv("p")), cbot())
+	     ],
+	     contents: [
+		 piff(cv("p"))
+	     ]
+	 };
 
-var example31 = {
-	assumptions: [
-	],
-	contents: [
-		piff(cor(cv("p"), cnot(cv("p"))))
-	]
-};
+	 var example31 = {
+	     assumptions: [
+	     ],
+	     contents: [
+		 piff(cor(cv("p"), cnot(cv("p"))))
+	     ]
+	 };
 
-var example32 = {
-	assumptions: [
-		cimpl(cv("p"), cv("q"))
-	],
-	contents: [
-		piff(cor(cnot(cv("p")), cv("q")))
-	]
-};
+	 var example32 = {
+	     assumptions: [
+		 cimpl(cv("p"), cv("q"))
+	     ],
+	     contents: [
+		 piff(cor(cnot(cv("p")), cv("q")))
+	     ]
+	 };
 
-var examples = [
-	example1,
-	example2,
-	example3,
-	example4,
-	example5,
-	example6,
-	example7,
-	example8,
-	example9,
-	example10,
-	example11,
-	example12,
-	example13,
-	example14,
-	example15,
-	example16,
-	example17,
-	example18,
-	example19,
-	example20,
-	example21,
-	example22,
-	example23,
-	example24,
-	example25,
-	example26,
-	example27,
-	example28,
-	example29,
-	example30,
-	example31,
-	example32,
-];
+	 var examples = [
+	     example1,
+	     example2,
+	     example3,
+	     example4,
+	     example5,
+	     example6,
+	     example7,
+	     example8,
+	     example9,
+	     example10,
+	     example11,
+	     example12,
+	     example13,
+	     example14,
+	     example15,
+	     example16,
+	     example17,
+	     example18,
+	     example19,
+	     example20,
+	     example21,
+	     example22,
+	     example23,
+	     example24,
+	     example25,
+	     example26,
+	     example27,
+	     example28,
+	     example29,
+	     example30,
+	     example31,
+	     example32,
+	 ];
 
-var maxExample = 32;
-var currentExample = 0;
+	 var maxExample = 32;
+	 var currentExample = 0;
 
-var mainproofbox = example32;
+	 var mainproofbox = example32;
 
-var ruleImplicationIntroduction =
-{
-	name: "→ intro",
-	hypotheses: [
-		{
-			type: "box",
-			box : {
-				assumptions: [{
-					type: "metavar",
-					name: "P"
-				}],
-				contents: [{
-					type: "formula",
-					formula: {
-						type: "metavar",
-						name: "Q"
-					}
-				}]
-			}
-		}
-	],
-	conclusion: {
-		type: "implies",
-		form1: {
-			type: "metavar",
-			name: "P"
-		},
-		form2: {
-			type: "metavar",
-			name: "Q"
-		}
-	}
-};
+	 var ruleImplicationIntroduction =
+	     {
+		 name: "→ intro",
+		 hypotheses: [
+		     {
+			 type: "box",
+			 box : {
+			     assumptions: [{
+				 type: "metavar",
+				 name: "P"
+			     }],
+			     contents: [{
+				 type: "formula",
+				 formula: {
+				     type: "metavar",
+				     name: "Q"
+				 }
+			     }]
+			 }
+		     }
+		 ],
+		 conclusion: {
+		     type: "implies",
+		     form1: {
+			 type: "metavar",
+			 name: "P"
+		     },
+		     form2: {
+			 type: "metavar",
+			 name: "Q"
+		     }
+		 }
+	     };
 
-var ruleImplicationElimination =
-{
-	name: "→ elim",
-	hypotheses: [
-		{
-			type: "formula",
-			formula : {
-				type: "metavar",
-				name: "P"
-			}
-		},
-		{
-			type: "formula",
-			formula : {
-				type: "implies",
-				form1: {
-					type: "metavar",
-					name: "P"
-				},
-				form2: {
-					type: "metavar",
-					name: "Q"
-				}
-			}
-		}
-	],
-	conclusion: {
-		type: "metavar",
-		name: "Q"
-	}
-};
+	 var ruleImplicationElimination =
+	     {
+		 name: "→ elim",
+		 hypotheses: [
+		     {
+			 type: "formula",
+			 formula : {
+			     type: "metavar",
+			     name: "P"
+			 }
+		     },
+		     {
+			 type: "formula",
+			 formula : {
+			     type: "implies",
+			     form1: {
+				 type: "metavar",
+				 name: "P"
+			     },
+			     form2: {
+				 type: "metavar",
+				 name: "Q"
+			     }
+			 }
+		     }
+		 ],
+		 conclusion: {
+		     type: "metavar",
+		     name: "Q"
+		 }
+	     };
 
-var ruleAndIntroduction = 
-{
-	name: "/\\ intro",
-	hypotheses: [
-		{
-			type: "formula",
-			formula: {
-				type: "metavar",
-				name: "P"
-			}
-		},
-		{
-			type: "formula",
-			formula: {
-				type: "metavar",
-				name: "Q"
-			}
-		}
-	],
-	conclusion: {
-		type: "and",
-		form1: {
-			type: "metavar",
-			name: "P"
-		},
-		form2: {
-			type: "metavar",
-			name: "Q"
-		}
-	}
-};
+	 var ruleAndIntroduction = 
+	     {
+		 name: "/\\ intro",
+		 hypotheses: [
+		     {
+			 type: "formula",
+			 formula: {
+			     type: "metavar",
+			     name: "P"
+			 }
+		     },
+		     {
+			 type: "formula",
+			 formula: {
+			     type: "metavar",
+			     name: "Q"
+			 }
+		     }
+		 ],
+		 conclusion: {
+		     type: "and",
+		     form1: {
+			 type: "metavar",
+			 name: "P"
+		     },
+		     form2: {
+			 type: "metavar",
+			 name: "Q"
+		     }
+		 }
+	     };
 
-var ruleAndElimination1 = 
-{
-	name: "/\\ elim 1",
-	hypotheses: [
-		{
-			type: "formula",
-			formula: {
-				type: "and",
-				form1: {
-					type: "metavar",
-					name: "P"
-				},
-				form2: {
-					type: "metavar",
-					name: "Q"
-				}
-			}
-		}
-	],
-	conclusion: {
-		type: "metavar",
-		name: "P"
-	}
-};
+	 var ruleAndElimination1 = 
+	     {
+		 name: "/\\ elim 1",
+		 hypotheses: [
+		     {
+			 type: "formula",
+			 formula: {
+			     type: "and",
+			     form1: {
+				 type: "metavar",
+				 name: "P"
+			     },
+			     form2: {
+				 type: "metavar",
+				 name: "Q"
+			     }
+			 }
+		     }
+		 ],
+		 conclusion: {
+		     type: "metavar",
+		     name: "P"
+		 }
+	     };
 
-var ruleAndElimination2 =
-{
-	name: "/\\ elim 2",
-	hypotheses: [
-		{
-			type: "formula",
-			formula: {
-				type: "and",
-				form1: {
-					type: "metavar",
-					name: "P"
-				},
-				form2: {
-					type: "metavar",
-					name: "Q"
-				}
-			}
-		}
-	],
-	conclusion: {
-		type: "metavar",
-		name: "Q"
-	}
-};
+	 var ruleAndElimination2 =
+	     {
+		 name: "/\\ elim 2",
+		 hypotheses: [
+		     {
+			 type: "formula",
+			 formula: {
+			     type: "and",
+			     form1: {
+				 type: "metavar",
+				 name: "P"
+			     },
+			     form2: {
+				 type: "metavar",
+				 name: "Q"
+			     }
+			 }
+		     }
+		 ],
+		 conclusion: {
+		     type: "metavar",
+		     name: "Q"
+		 }
+	     };
 
-var ruleDoubleNegationIntroduction = {
-	name: "¬¬ intro",
-	hypotheses: [
-		{
-			type: "formula",
-			formula: {
-				type: "metavar",
-				name: "P"
-			}
-		}
-	],
-	conclusion: {
-		type: "not",
-		form1: {
-			type: "not",
-			form1: {
-				type: "metavar",
-				name: "P"
-			}
-		}
-	}
-};
+	 var ruleDoubleNegationIntroduction = {
+	     name: "¬¬ intro",
+	     hypotheses: [
+		 {
+		     type: "formula",
+		     formula: {
+			 type: "metavar",
+			 name: "P"
+		     }
+		 }
+	     ],
+	     conclusion: {
+		 type: "not",
+		 form1: {
+		     type: "not",
+		     form1: {
+			 type: "metavar",
+			 name: "P"
+		     }
+		 }
+	     }
+	 };
 
-var ruleDoubleNegationElimination = {
-	name: "¬¬ elim",
-	hypotheses: [
-		{
-			type: "formula",
-			formula: {
-				type: "not",
-				form1: {
-					type: "not",
-					form1: {
-						type: "metavar",
-						name: "P"
-					}
-				}
-			}
-		}
-	],
-	conclusion: {
-		type: "metavar",
-		name: "P"
-	}
-};
+	 var ruleDoubleNegationElimination = {
+	     name: "¬¬ elim",
+	     hypotheses: [
+		 {
+		     type: "formula",
+		     formula: {
+			 type: "not",
+			 form1: {
+			     type: "not",
+			     form1: {
+				 type: "metavar",
+				 name: "P"
+			     }
+			 }
+		     }
+		 }
+	     ],
+	     conclusion: {
+		 type: "metavar",
+		 name: "P"
+	     }
+	 };
 
-var ruleModusTollens = {
-	name: "MT",
-	hypotheses: [
-		piff(cimpl(cmv("P"), cmv("Q"))),
-		piff(cnot(cmv("Q")))
-	],
-	conclusion: cnot(cmv("P"))
-};
+	 var ruleModusTollens = {
+	     name: "MT",
+	     hypotheses: [
+		 piff(cimpl(cmv("P"), cmv("Q"))),
+		 piff(cnot(cmv("Q")))
+	     ],
+	     conclusion: cnot(cmv("P"))
+	 };
 
-var ruleOrIntroduction1 = {
-	name: "\/ intro 1",
-	hypotheses: [
-		piff(cmv("P"))
-	],
-	conclusion: cor(cmv("P"), cmv("Q"))
-};
+	 var ruleOrIntroduction1 = {
+	     name: "\/ intro 1",
+	     hypotheses: [
+		 piff(cmv("P"))
+	     ],
+	     conclusion: cor(cmv("P"), cmv("Q"))
+	 };
 
-var ruleOrIntroduction2 = {
-	name: "\/ intro 2",
-	hypotheses: [
-		piff(cmv("Q"))
-	],
-	conclusion: cor(cmv("P"), cmv("Q"))
-};
+	 var ruleOrIntroduction2 = {
+	     name: "\/ intro 2",
+	     hypotheses: [
+		 piff(cmv("Q"))
+	     ],
+	     conclusion: cor(cmv("P"), cmv("Q"))
+	 };
 
-var ruleOrElimination = {
-	name: "\/ elim",
-	hypotheses: [
-		piff(cor(cmv("P"), cmv("Q"))),
-		{
-			type: "box",
-			box : {
-				assumptions: [ cmv("P") ],
-				contents: [ piff(cmv("R")) ]
-			}
-		},
-		{
-			type: "box",
-			box : {
-				assumptions: [ cmv("Q") ],
-				contents: [ piff(cmv("R")) ]
-			}
-		}
-	],
-	conclusion: cmv("R")
-};
+	 var ruleOrElimination = {
+	     name: "\/ elim",
+	     hypotheses: [
+		 piff(cor(cmv("P"), cmv("Q"))),
+		 {
+		     type: "box",
+		     box : {
+			 assumptions: [ cmv("P") ],
+			 contents: [ piff(cmv("R")) ]
+		     }
+		 },
+		 {
+		     type: "box",
+		     box : {
+			 assumptions: [ cmv("Q") ],
+			 contents: [ piff(cmv("R")) ]
+		     }
+		 }
+	     ],
+	     conclusion: cmv("R")
+	 };
 
-var ruleBottomElimination = {
-	name: "⊥ elim",
-	hypotheses: [
-		piff(cbot())
-	],
-	conclusion: cmv("P")
-};
+	 var ruleBottomElimination = {
+	     name: "⊥ elim",
+	     hypotheses: [
+		 piff(cbot())
+	     ],
+	     conclusion: cmv("P")
+	 };
 
-var ruleNotElimination = {
-	name: "¬ elim",
-	hypotheses: [
-		piff(cmv("P")),
-		piff(cnot(cmv("P")))
-	],
-	conclusion: cbot()
-};
+	 var ruleNotElimination = {
+	     name: "¬ elim",
+	     hypotheses: [
+		 piff(cmv("P")),
+		 piff(cnot(cmv("P")))
+	     ],
+	     conclusion: cbot()
+	 };
 
-var ruleNotIntroduction = {
-	name: "¬ elim",
-	hypotheses: [
-		{
-			type: "box",
-			box : {
-				assumptions: [ cmv("P") ],
-				contents: [ piff(cbot()) ]
-			}
-		}
-	],
-	conclusion: cnot(cmv("P"))
-};
+	 var ruleNotIntroduction = {
+	     name: "¬ elim",
+	     hypotheses: [
+		 {
+		     type: "box",
+		     box : {
+			 assumptions: [ cmv("P") ],
+			 contents: [ piff(cbot()) ]
+		     }
+		 }
+	     ],
+	     conclusion: cnot(cmv("P"))
+	 };
 
-var rulePBC = {
-	name: "PBC",
-	hypotheses: [
-		{
-			type: "box",
-			box : {
-				assumptions: [ cnot(cmv("P")) ],
-				contents: [ piff(cbot()) ]
-			}
-		}
-	],
-	conclusion: cmv("P")
-};
+	 var rulePBC = {
+	     name: "PBC",
+	     hypotheses: [
+		 {
+		     type: "box",
+		     box : {
+			 assumptions: [ cnot(cmv("P")) ],
+			 contents: [ piff(cbot()) ]
+		     }
+		 }
+	     ],
+	     conclusion: cmv("P")
+	 };
 
-var ruleLEM = {
-	name: "LEM",
-	hypotheses: [],
-	conclusion: cor(cmv("P"), cnot(cmv("P")))
-};
+	 var ruleLEM = {
+	     name: "LEM",
+	     hypotheses: [],
+	     conclusion: cor(cmv("P"), cnot(cmv("P")))
+	 };
 
-var rules = [
-	ruleImplicationElimination, 
-	ruleModusTollens,
-	ruleAndIntroduction,
-	ruleAndElimination1,
-	ruleAndElimination2,
-	ruleDoubleNegationIntroduction,
-	ruleDoubleNegationElimination,
-	ruleOrIntroduction1,
-	ruleOrIntroduction2,
-	ruleBottomElimination,
-	ruleNotElimination,
-	ruleLEM,
-	ruleNotIntroduction,
-	rulePBC,
-	ruleImplicationIntroduction,
-	ruleOrElimination
-];
+	 var rules = [
+	     ruleImplicationElimination, 
+	     ruleModusTollens,
+	     ruleAndIntroduction,
+	     ruleAndElimination1,
+	     ruleAndElimination2,
+	     ruleDoubleNegationIntroduction,
+	     ruleDoubleNegationElimination,
+	     ruleOrIntroduction1,
+	     ruleOrIntroduction2,
+	     ruleBottomElimination,
+	     ruleNotElimination,
+	     ruleLEM,
+	     ruleNotIntroduction,
+	     rulePBC,
+	     ruleImplicationIntroduction,
+	     ruleOrElimination
+	 ];
 
-function formula_to_string(formula) {
-	if (formula.type == "and") {
-		return "(" + formula_to_string(formula.form1) + " ∧ " +
+	 function formula_to_string(formula) {
+	     if (formula.type == "and") {
+		 return "(" + formula_to_string(formula.form1) + " ∧ " +
 			formula_to_string(formula.form2) + ")";
-	} else if (formula.type == "or") {
-		return "(" + formula_to_string(formula.form1) + " ∨ " + 
+	     } else if (formula.type == "or") {
+		 return "(" + formula_to_string(formula.form1) + " ∨ " + 
 			formula_to_string(formula.form2) + ")";
-	} else if (formula.type == "implies") {
-		return "(" + formula_to_string(formula.form1) + " → " + 
+	     } else if (formula.type == "implies") {
+		 return "(" + formula_to_string(formula.form1) + " → " + 
 			formula_to_string(formula.form2) + ")";
-	} else if (formula.type == "not") {
-		return "(¬ " + formula_to_string(formula.form1) + ")";
-	} else if (formula.type == "var") {
-		return formula.name;
-	} else if (formula.type == "metavar") {
-		return formula.name;
-	} else if (formula.type == "bot") {
-		return "⊥";
-	} else {
-		return "unknown";
-	}
-}
-
-var padding = 7;
-var rounding = 5;
-var fontsize = 16;
-var usefulWidth = 420;
-
-Raphael.fn.proofitem = function(x, y, proofitem, where, first, depth) {
-	// where must be "inrule" or "inproof"
-	if (proofitem.type == "box") {
-		return paper.proofbox(x, y, proofitem.box, where, first, depth + 1);
-	} else if (proofitem.type == "formula") {
-		var f = paper.formula(x, y, proofitem.formula, where, first, proofitem.why, depth);
-		if (proofitem.why == null) {
-			first.first = 0;
-		}
-		return f;
-//	} else if (proofitem.type == "dots") {
-//		return paper.set([
-//			paper.rect(x, y + 0.0 * padding, padding * 0.1, 0.1 * padding),
-//			paper.rect(x, y + 1.0 * padding, padding * 0.1, 0.1 * padding),
-//			paper.rect(x, y + 2.0 * padding, padding * 0.1, 0.1 * padding)
-//				]);
-	} else {
-		alert("unknown proofitem " + proofitem.type);
-	}
-}
-
-Raphael.fn.proofbox = function(x, y, proofbox, where, first, depth) {
-	// where must be "inrule" or "inproof"
-
-	// first is true if we haven't encountered unjustified formulae yet
-
-	var rect = paper.rect(x, y, 10, 10, rounding);
-	rect.attr("fill", "orange");
-	rect.attr("cursor", "pointer");
-
-	var nodes = [];
-
-	var oldx = x, height = 0;
-	var hw = 0;
-	for (var i = 0; i < proofbox.assumptions.length; ++i) {
-		var f = paper.formula(x + padding, y + padding,
-			proofbox.assumptions[i], where == "inrule" ? "inrule" : "assumption", first, null, depth);
-		nodes.push(f);
-		y += f.getBBox().height + padding;
-	}
-	var justified = 1;
-	for (var i = 0; i < proofbox.contents.length; ++i) {
-		if (proofbox.contents[i].type == "formula" &&
-			proofbox.contents[i].why == null) {
-				justified = 0;
-		}
-	}
-	if (!justified) {
-		nodes.push(paper.set([
-			paper.rect(x + 1.0 * padding, y + 0.5 * padding, padding * 0.1, 0.1 * padding),
-			paper.rect(x + 1.0 * padding, y + 1.5 * padding, padding * 0.1, 0.1 * padding),
-			paper.rect(x + 1.0 * padding, y + 2.5 * padding, padding * 0.1, 0.1 * padding)
-		]));
-		y += 2.5 * padding;
-	}
-	for (var i = 0; i < proofbox.contents.length; ++i) {
-		var item = paper.proofitem(x + padding, y + padding,
-			proofbox.contents[i], where, first, depth);
-		nodes.push(item);
-		y += item.getBBox().height + padding;
-	}
-	var set = paper.set(nodes);
-	var b = set.getBBox();
-	rect.attr("width", b.width + 2 * padding);
-	rect.attr("height", b.height + 2 * padding);
-	set.push(rect);
-
-	return set;
-}
-
-lefttext = function(x, y, s) {
-	return paper.text(x, y, s).attr({ "text-anchor": "start", "font-size" : fontsize });
-}
-
-Raphael.fn.formula = function(x, y, form, type, first, why, depth) {
-	var cursor = "pointer";
-	var colorBack = "orange";
-	if (type == "assumption") {
-		colorBack = "gold";
-	} else if (type == "inproof") {
-		colorBack = "Turquoise";
-		cursor = "default";
-		if (why == null && first.first == 1) {
-			colorBack = "brown";
-		}
-	} else if (type == "inrule") {
-		cursor = "pointer";
-	} else {
-		alert("should not get here");
-		colorBack = "red";
-	}
-
-	var rect = null;
-	if (type != "inrule") {
-		rect = paper.rect(x, y, 10, 10, rounding);
-	}
-	var text = lefttext(x, y, formula_to_string(form));
-//	text.attr("font-size", fontsize);
-	text.attr("cursor", cursor);
-	if (type != "inrule") {
-		rect.attr("cursor", cursor);
-	}
-	b = text.getBBox();
-	
-	text.attr("x", text.attr("x") + (type != "inrule") * padding);
-	text.attr("y", text.attr("y") + (type != "inrule") * padding + b.height / 2);
-	$(text.node).css({
-		"-webkit-touch-callout": "none",
-		"-webkit-user-select": "none",
-		"-khtml-user-select": "none",
-		"-moz-user-select": "none",
-		"-ms-user-select": "none",
-		"user-select": "none",
-	});
-
-	if (type != "inrule") {
-		rectWidth = text.node.getBBox().width + 2 * padding;
-		rectHeight = text.node.getBBox().height + 2 * padding;
-		rect.attr("width", rectWidth);
-		rect.attr("height", rectHeight);
-		rect.attr("fill", colorBack);
-		var result = paper.set([rect, text]);
-		if (type == "assumption" && first.first == 1) {
-			result.mouseover(function(e) {
-				rect.attr("fill", "red");
-			}).mouseout(function(e) {
-				rect.attr("fill", "gold");
-			}).mousedown(function(e) {
-				applyHypothesis(form);
-			});
-		}
-		var bbox = result.getBBox();
-		if (bbox.y + bbox.height > paperHeight) {
-			paperHeight += bbox.height;
-			paper.setSize("100%", paperHeight);
-		}
-		return result;
-	} else {
-		return text;
-	}
-};
-
-function appearsIn(v, f) {
-	switch (f.type) {
-		case "implies":
-		case "and":
-		case "or":
-			return appearsIn(v, f.form1) ||
-				appearsIn(v, f.form2);
-		case "not":
-			return appearsIn(v, f.form1);
-		case "var":
-		case "bot":
-			return false;
-		case "metavar":
-			return v == f.name;
-	}
-	alert("error in appearsIn");
-}
-
-function singleSubst(v, f) {
-	var result = {};
-	result[v] = f;
-	return result;
-}
-
-function modSigma(sigma, v, f) {
-	var result = {};
-	for (var key in sigma) {
-		if (sigma.hasOwnProperty(key)) {
-			if (v == key) {
-				alert("error in modSigma");
-			}
-			result[key] = applySubstFormula(sigma[key], singleSubst(v, f));
-		}
-	}
-	result[v] = f;
-	return result;
-}
-
-function computeMguHelper(lf1, lf2, sigma) {
-	if (lf1.length != lf2.length) {
-		alert("error in mgu");
-	}
-	while (lf1.length > 0) {
-		var f1 = lf1.shift();
-		var f2 = lf2.shift();
-		if (f1.type == "metavar") {
-			if (f2.type == "metavar") {
-				sigma = modSigma(sigma, f1.name, f2);
-				for (var i = 0; i < lf1.length; ++i) {
-					lf1[i] = applySubstFormula(lf1[i], singleSubst(f1.name, f2));
-					lf2[i] = applySubstFormula(lf2[i], singleSubst(f1.name, f2));
-				}
-			} else if (appearsIn(f1.name, f2)) {
-				return null;
-			} else {
-				sigma = modSigma(sigma, f1.name, f2);
-				for (var i = 0; i < lf1.length; ++i) {
-					lf1[i] = applySubstFormula(lf1[i], singleSubst(f1.name, f2));
-					lf2[i] = applySubstFormula(lf2[i], singleSubst(f1.name, f2));
-				}
-			}
-		} else if (f1.type == "and") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "and") {
-				lf1.push(f1.form1);
-				lf1.push(f1.form2);
-				lf2.push(f2.form1);
-				lf2.push(f2.form2);
-			} else {
-				return null;
-			}
-		} else if (f1.type == "implies") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "implies") {
-				lf1.push(f1.form1);
-				lf1.push(f1.form2);
-				lf2.push(f2.form1);
-				lf2.push(f2.form2);
-			} else {
-				return null;
-			}
-		} else if (f1.type == "or") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "or") {
-				lf1.push(f1.form1);
-				lf1.push(f1.form2);
-				lf2.push(f2.form1);
-				lf2.push(f2.form2);
-			} else {
-				return null;
-			}
-		} else if (f1.type == "not") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "not") {
-				lf1.push(f1.form1);
-				lf2.push(f2.form1);
-			} else {
-				return null;
-			}
-		} else if (f1.type == "var") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "var") {
-				if (f1.name != f2.name) {
-					return null;
-				}
-			} else {
-				return null;
-			}
-		} else if (f1.type == "bot") {
-			if (f2.type == "metavar") {
-				lf1.push(f2);
-				lf2.push(f1);
-			} else if (f2.type == "bot") {
-				// ok, do nothing
-			} else {
-				return null;
-			}
-		} else {
-			alert("trouble in mgu");
-		}
-	}
-	return sigma;
-}
-
-function computeMgu(f1, f2) {
-	return computeMguHelper([f1], [f2], {});
-}
-
-function applySubstFormula(f, sigma) {
-	if (f.type == "and" || f.type == "or" || f.type == "implies") {
-		return {
-			"type": f.type,
-			"form1": applySubstFormula(f.form1, sigma),
-			"form2": applySubstFormula(f.form2, sigma)
-		};
-	} else if (f.type == "not") {
-		return {
-			"type": f.type,
-			"form1": applySubstFormula(f.form1, sigma)
-		};
-	} else if (f.type == "var" || f.type == "bot") {
-		return f;
-	} else if (f.type == "metavar") {
-		if (f.name in sigma) {
-			return sigma[f.name];
-		} else {
-			return f;
-		} 
-	}
-	alert("error in applySubstFormula");
-}
-
-var freshCount = 0;
-
-function varsFormulaHelper(f, result) {
-	if (f.type == "var" || f.type == "bot") {
-		// no variable here, move on
-	} else if (f.type == "and" || f.type == "or" || f.type == "implies") {
-		varsFormulaHelper(f.form1, result);
-		varsFormulaHelper(f.form2, result);
-	} else if (f.type == "not") {
-		varsFormulaHelper(f.form1, result);
-	} else if (f.type == "metavar") {
-		result.push(f.name);
-	} else {
-		alert("error in varsFormulaHelper");
-	}
-}
-
-function varsFormula(f) {
-	var result = [];
-	varsFormulaHelper(f, result);
-	return result;
-}
-
-function varsProofItemHelper(proofitem, result) {
-	if (proofitem.type == "box") {
-		for (var i = 0; i < proofitem.box.assumptions.length; ++i) {
-			varsFormulaHelper(proofitem.box.assumptions[i], result);
-		}
-		for (var i = 0; i < proofitem.box.contents.length; ++i) {
-			varsProofItemHelper(proofitem.box.contents[i], result);
-		}
-	} else if (proofitem.type == "formula") {
-		varsFormulaHelper(proofitem.formula, result);
-	} else {
-		alert("unknown proofitem");
-	}
-}
-
-function varsProofItem(proofitem) {
-	var result = [];
-	varsProofItemHelper(f, result);
-	return result;
-}
-
-function applySubstFormulaArray(ar, sigma) {
-	var result = [];
-	for (var i = 0; i < ar.length; ++i) {
-		result.push(applySubstFormula(ar[i], sigma));
-	}
-	return result;
-}
-
-function applySubstProofItem(proofitem, sigma) {
-	if (proofitem.type == "formula") {
-		return {
-			type: "formula",
-			why: proofitem.why,
-			formula: applySubstFormula(proofitem.formula, sigma)
-		}
-	} else if (proofitem.type == "box") {
-		return {
-			type: "box",
-			box: {
-				assumptions: applySubstFormulaArray(proofitem.box.assumptions,
-					sigma),
-				contents: applySubstProofItemArray(proofitem.box.contents,
-					sigma)
-			}
-		}
-	} else {
-		alert("error in applySubstProofItem");
-	}
-}
-
-function applySubstProofItemArray(ar, sigma) {
-	var result = [];
-	for (var i = 0; i < ar.length; ++i) {
-		result.push(applySubstProofItem(ar[i], sigma));
-	}
-	return result;
-}
-
-function freshRule(rule) {
-	var v = varsFormula(rule.conclusion);
-	for (var i = 0; i < rule.hypotheses.length; ++i) {
-		varsProofItemHelper(rule.hypotheses[i], v);
-	}
-	var nv = {};
-	for (var i = 0; i < v.length; ++i) {
-		nv[v[i]] = { type: "metavar", name: "?" + freshCount };
-		freshCount++;
-	}
-//	for (var k in nv) {
-//		if (nv.hasOwnProperty(k)) {
-//			alert(k + " ---- " + nv[k].name);
-//		}
-//	}
-	return {
-		name: rule.name,
-		conclusion: applySubstFormula(rule.conclusion, nv),
-		hypotheses: applySubstProofItemArray(rule.hypotheses, nv)
-	};
-}
-
-function applyHypothesis(formula) {
-	applyRule({ name: "hypothesis", hypotheses: [], conclusion: formula });
-}
-
-function applySubstProofBox(proofbox, sigma) {
-	for (var i = 0; i < proofbox.contents.length; ++i) {
-		proofbox.contents[i] = applySubstProofItem(proofbox.contents[i], sigma);
-	}
-}
-
-function applyFirst(rule, proofbox) {
-	for (var i = 0; i < proofbox.contents.length; ++i) {
-		var pi = proofbox.contents[i];
-		if (pi.type == "formula" && pi.why == null) {
-			mgu = computeMgu(rule.conclusion, pi.formula);
-			if (mgu != null) {
-				proofbox.contents[i].why = rule.name;
-				for (var i = rule.hypotheses.length - 1; i >= 0; --i) {
-					var newpi = applySubstProofItem(rule.hypotheses[i], mgu);
-					proofbox.contents.splice(0, 0, newpi);
-				}
-				applySubstProofBox(mainproofbox, mgu);
-				redrawEverything();
-			} else {
-				alert("Cannot apply this rule!");
-				removeUndoPoint();
-			}
-			return 1;
-		} else if (pi.type == "box") {
-			if (applyFirst(rule, pi.box)) {
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
-
-function applyRule(rule) {
-	createUndoPoint();
-//	rule = freshRule(rule); -- freshRule is now called only for deduction rules on the bottom
-	// hypotheses, which are encoded as rules with no hypotheses :D, are not renamed since
-	// they may already contain meta-variables which were freshly generated previously
-	applyFirst(rule, mainproofbox);
-}
-
-function allrects(set, color) {
-	set.forEach(function (r) {
-		if (r.type == "rect") {
-			r.attr({ fill : color });
-		} else if (r.type == "set") {
-			allrects(r, color);
-		}
-	});
-}
-
-Raphael.fn.rule = function(x, y, rule) {
-	var rect = paper.rect(x, y, 10, 10, rounding);
-	rect.attr("fill", "orange");
-	rect.attr("cursor", "pointer");
-
-	var name = rule.name;
-	var hypos = rule.hypotheses;
-	var concl = rule.conclusion;
-
-	var nodes = [];
-
-	var oldx = x, height = 0;
-	var hw = 0;
-	var nodesHypotheses = [];
-	for (var i = 0; i < hypos.length; ++i) {
-		var f = paper.proofitem(x + padding, y + padding, hypos[i], "inrule", { first : 0 }, 0);
-		nodes.push(f);
-		x += f.getBBox().width + padding;
-		hw += f.getBBox().width;
-		if (f.getBBox().height > height) {
-			height = f.getBBox().height;
-		}
-		nodesHypotheses.push(f);
-	}
-	y += height + padding + padding;
-	x = oldx;
-	var nodeConclusion = paper.formula(x + padding, y, concl, "inrule", 0);
-	nodes.push(nodeConclusion);
-	var cw = nodeConclusion.getBBox().width;
-	var set = paper.set(nodes);
-	var b = set.getBBox();
-	nodeConclusion.attr("x", x + padding + (b.width - cw) / 2);
-//	if (nodesHypotheses.length == 1) {
-//		nodesHypotheses[0].attr("x", x + padding + (b.width - hw) / 2);
-//	}
-//	} else {
-//		skip = b.width - hw;
-//		skip /= nodesHypotheses.length - 1;
-//		var dx = 0;
-//		for (var i = 0; i < nodesHypotheses.length; ++i) {
-//			var nw = nodesHypotheses[i].getBBox().width;
-//			nodesHypotheses[i].attr("x", x + dx + padding + i * skip);
-//			dx += nw;
-//		}
-//	}
-	rect.attr("width", b.width + 2 * padding);
-	rect.attr("height", b.height + 2 * padding);
-//	var line = paper.path(["M", x + padding, y - padding / 2,
-//		"L", x + padding + b.width, y - padding / 2 ]).attr("cursor", "pointer");
-//	nodes.push(line);
-//	set.push(line);
-	set.push(rect);
-
-	set.mouseover(function(e) {
-		allrects(set, "red");
-//		rect.attr("fill", "red");
-	}).mouseout(function(e) {
-		allrects(set, "orange");
-//		rect.attr("fill", "orange");
-	}).mousedown(function(e) {
-		applyRule(freshRule(rule));
-	});
-
-	var bbox = set.getBBox();
-	if (bbox.y + bbox.height > paperHeight) {
-		paperHeight += bbox.height;
-		paper.setSize("100%", paperHeight);
-	}
-	return set;
-};
-
-Raphael.fn.centerRect = function( cx, cy, width, height ) {
-	var xLeftTop = cx - (width / 2);
-	var yLeftTop = cy - (height / 2);
-	this.rectObj = paper.rect( xLeftTop, yLeftTop, width, height );
-	return this.rectObj;
-};
-
-var paperHeight = 640;
-var paper = Raphael("container", "100%", paperHeight);
-
-function removeAllElements(set) {
-	if (set.type == "set") {
-		set.forEach(function (s) {
-			removeAllElements(s);
-		});
-	} else {
-		set.remove();
-	}
-}
-
-var undoBuffer = [];
-var redoBuffer = [];
-var oldredo = [];
-
-function createUndoPoint() {
-	oldredo = redoBuffer;
-	redoBuffer = [];
-	undoBuffer.push(jQuery.extend(true, {}, mainproofbox));
-}
-
-function removeUndoPoint() {
-	redoBuffer = oldredo;
-	undoBuffer.pop();
-}
-
-function undoEnabled() {
-	return undoBuffer.length != 0;
-}
-
-function performUndo() {
-	if (undoEnabled()) {
-		redoBuffer.push(jQuery.extend(true, {}, mainproofbox));
-		mainproofbox = undoBuffer.pop();
-		redrawEverything();
-	}
-}
-
-function redoEnabled() {
-	return redoBuffer.length != 0;
-}
-
-function performRedo() {
-	if (redoEnabled()) {
-		undoBuffer.push(jQuery.extend(true, {}, mainproofbox));
-		mainproofbox = redoBuffer.pop();
-		redrawEverything();
-	}
-}
-
-var done = 0;
-
-function nextLevelEnabled() {
-return true;
-//	return (done == 1) && (currentExample < examples.length - 1);
-}
-
-function goToNextLevel() {
-	if (nextLevelEnabled()) {
-		if (currentExample < examples.length - 1) {
-			currentExample++;
-			done = 0;
-			loadExample(currentExample);
-		}
-	} else {
-		if (done == 1) {
-			alert("You have already finished all levels. Congratulations!");
-		} else {
-			alert("Please finish current level before moving on!");
-		}
-	}
-}
-
-function drawEverything() {
-	var all = paper.rect(0, 0, "100%", "100%", 16).attr("fill", "Snow");
-
-	var undo = paper.rect(padding, padding, 100, 16, rounding);
-	undo.attr("fill", "lightblue").attr("cursor", "pointer");
-	var textUndo = lefttext(padding * 2, padding * 3.5, "UNDO").attr("cursor", "pointer");
-	undo.attr("width", textUndo.getBBox().width * 1 + 2 * padding);
-	undo.attr("height", textUndo.getBBox().height * 2 + padding);
-	var undoset = paper.set([ textUndo, undo ]);
-	undoset.mouseover(function(e) {
-		if (undoEnabled()) {
-			undo.attr("fill", "lightyellow");
-		}
-	}).mouseout(function(e) {
-		undo.attr("fill", "lightblue");
-	}).mousedown(function(e) {
-		performUndo();
-	});
-
-	var x = textUndo.getBBox().width * 1 + 3 * padding;
-
-	var redo = paper.rect(x + padding, padding, 100, 16, rounding);
-	redo.attr("fill", "lightblue").attr("cursor", "pointer");
-	var textRedo = lefttext(x + padding * 2, padding * 3.5, "REDO").attr("cursor", "pointer");
-	redo.attr("width", textRedo.getBBox().width * 1 + 2 * padding);
-	redo.attr("height", textRedo.getBBox().height * 2 + padding);
-	var redoset = paper.set([ textRedo, redo ]);
-	redoset.mouseover(function(e) {
-		if (redoEnabled()) {
-			redo.attr("fill", "lightyellow");
-		}
-	}).mouseout(function(e) {
-		redo.attr("fill", "lightblue");
-	}).mousedown(function(e) {
-		performRedo();
-	});
-
-	x += textRedo.getBBox().width * 1 + 3 * padding;
-
-	var t = lefttext(x + padding, padding * 3.5, "Level: " + (currentExample + 1) + "/" + examples.length);
-
-	var nextlevel = paper.rect(x + padding, padding, 100, 16, rounding);
-	nextlevel.attr("fill", "lightblue").attr("cursor", "pointer");
-	var textNextLevel = lefttext(x + padding * 2, padding * 3.5, "NEXT LEVEL").attr("cursor", "pointer");
-	var wnl = textNextLevel.getBBox().width * 1 + 2 * padding;
-	nextlevel.attr("width", wnl);
-	nextlevel.attr("height", textNextLevel.getBBox().height * 2 + padding);
-	nextlevel.attr("x", usefulWidth - padding - wnl);
-	textNextLevel.attr("x", usefulWidth - wnl);
-	var nextlevelset = paper.set([ textNextLevel, nextlevel ]);
-	nextlevelset.mouseover(function(e) {
-		if (nextLevelEnabled()) {
-			nextlevel.attr("fill", "lightyellow");
-		}
-	}).mouseout(function(e) {
-		nextlevel.attr("fill", "lightblue");
-	}).mousedown(function(e) {
-		goToNextLevel();
-	});
-
-	var y = padding * 2 + textUndo.getBBox().height * 2;
-
-	var myfirst = { first : 1 };
-	var box = paper.proofbox(padding, y + padding, mainproofbox, "inproof", myfirst);
-	done = myfirst.first == 1;
-	y += box.getBBox().height + padding * 2;
-	x = 0;
-	var currentRowHeight = 0;
-	for (var i = 0; i < rules.length; ++i) {
-		var r = paper.rule(x + padding, y + padding, rules[i]);
-		x += r.getBBox().width + padding;
-		if (x > usefulWidth - padding) {
-			x = 0;
-			y += currentRowHeight + padding;
-			removeAllElements(r);
-			var r = paper.rule(x + padding, y + padding, rules[i]);
-			x += r.getBBox().width + padding;
-			currentRowHeight = 0;
-		}
-		if (r.getBBox().height > currentRowHeight) {
-			currentRowHeight = r.getBBox().height;
-		}
-	}
-}
-
-function redrawEverything() {
-	paper.clear();
-	drawEverything();
-}
-
-function loadExample(currentExample) {
-	mainproofbox = examples[currentExample];
-	redrawEverything();
-	undoBuffer = [];
-	redoBuffer = [];
-	oldredo = [];
-}
-
-loadExample(currentExample);
-
-</script>
+	     } else if (formula.type == "not") {
+		 return "(¬ " + formula_to_string(formula.form1) + ")";
+	     } else if (formula.type == "var") {
+		 return formula.name;
+	     } else if (formula.type == "metavar") {
+		 return formula.name;
+	     } else if (formula.type == "bot") {
+		 return "⊥";
+	     } else {
+		 return "unknown";
+	     }
+	 }
+
+	 var padding = 7;
+	 var rounding = 5;
+	 var fontsize = 16;
+	 var usefulWidth = 420;
+
+	 Raphael.fn.proofitem = function(x, y, proofitem, where, first, allassumptions) {
+	     // where must be "inrule" or "inproof"
+	     if (proofitem.type == "box") {
+		 var sizesofar = allassumptions.length;
+		 var toreturn = paper.proofbox(x, y, proofitem.box, where, first, allassumptions);
+		 if (where == "inproof") {
+//		     console.log("ASDF: ", sizesofar, allassumptions.length);
+		     if (first.first == 1) {
+			 while (sizesofar < allassumptions.length) {
+//			     console.log("popping");
+			     allassumptions.pop();
+			 }
+		     }
+		 }
+		 return toreturn;
+	     } else if (proofitem.type == "formula") {
+		 var f = paper.formula(x, y, proofitem.formula, where, first, proofitem.why, allassumptions);
+		 if (proofitem.why == null) {
+		     first.first = 0;
+		 }
+		 return f;
+		 //	} else if (proofitem.type == "dots") {
+		 //		return paper.set([
+			//			paper.rect(x, y + 0.0 * padding, padding * 0.1, 0.1 * padding),
+			//			paper.rect(x, y + 1.0 * padding, padding * 0.1, 0.1 * padding),
+			//			paper.rect(x, y + 2.0 * padding, padding * 0.1, 0.1 * padding)
+		 //				]);
+	     } else {
+		 alert("unknown proofitem " + proofitem.type);
+	     }
+	 }
+
+	 Raphael.fn.proofbox = function(x, y, proofbox, where, first, allassumptions) {
+	     if (where == "inproof") {
+//		 console.log("proofbox ", allassumptions);
+	     }
+	     // where must be "inrule" or "inproof"
+
+	     // first is true if we haven't encountered unjustified formulae yet
+
+	     var rect = paper.rect(x, y, 10, 10, rounding);
+	     rect.attr("fill", "orange");
+	     rect.attr("cursor", "pointer");
+
+	     var nodes = [];
+
+	     var oldx = x, height = 0;
+	     var hw = 0;
+	     for (var i = 0; i < proofbox.assumptions.length; ++i) {
+		 var f = paper.formula(x + padding, y + padding,
+				       proofbox.assumptions[i], where == "inrule" ? "inrule" : "assumption", first, null, allassumptions);
+		 nodes.push(f);
+		 y += f.getBBox().height + padding;
+	     }
+	     var justified = 1;
+	     for (var i = 0; i < proofbox.contents.length; ++i) {
+		 if (proofbox.contents[i].type == "formula" &&
+		     proofbox.contents[i].why == null) {
+		     justified = 0;
+		 }
+	     }
+	     if (!justified) {
+		 nodes.push(paper.set([
+		     paper.rect(x + 1.0 * padding, y + 0.5 * padding, padding * 0.1, 0.1 * padding),
+		     paper.rect(x + 1.0 * padding, y + 1.5 * padding, padding * 0.1, 0.1 * padding),
+		     paper.rect(x + 1.0 * padding, y + 2.5 * padding, padding * 0.1, 0.1 * padding)
+		 ]));
+		 y += 2.5 * padding;
+	     }
+	     for (var i = 0; i < proofbox.contents.length; ++i) {
+		 var item = paper.proofitem(x + padding, y + padding,
+					    proofbox.contents[i], where, first, allassumptions);
+		 nodes.push(item);
+		 y += item.getBBox().height + padding;
+	     }
+	     var set = paper.set(nodes);
+	     var b = set.getBBox();
+	     rect.attr("width", b.width + 2 * padding);
+	     rect.attr("height", b.height + 2 * padding);
+	     set.push(rect);
+
+	     return set;
+	 }
+
+	 lefttext = function(x, y, s) {
+	     return paper.text(x, y, s).attr({ "text-anchor": "start", "font-size" : fontsize });
+	 }
+
+	 Raphael.fn.formula = function(x, y, form, type, first, why, allassumptions) {
+	     var cursor = "pointer";
+	     var colorBack = "orange";
+	     if (type == "assumption") {
+		 colorBack = "gold";
+	     } else if (type == "inproof") {
+		 colorBack = "Turquoise";
+		 cursor = "default";
+		 if (why == null && first.first == 1) {
+		     colorBack = "brown";
+		 }
+	     } else if (type == "inrule") {
+		 cursor = "pointer";
+	     } else {
+		 alert("should not get here");
+		 colorBack = "red";
+	     }
+
+	     var rect = null;
+	     if (type != "inrule") {
+		 rect = paper.rect(x, y, 10, 10, rounding);
+	     }
+	     var text = lefttext(x, y, formula_to_string(form));
+	     //	text.attr("font-size", fontsize);
+	     text.attr("cursor", cursor);
+	     if (type != "inrule") {
+		 rect.attr("cursor", cursor);
+	     }
+	     b = text.getBBox();
+	     
+	     text.attr("x", text.attr("x") + (type != "inrule") * padding);
+	     text.attr("y", text.attr("y") + (type != "inrule") * padding + b.height / 2);
+	     $(text.node).css({
+		 "-webkit-touch-callout": "none",
+		 "-webkit-user-select": "none",
+		 "-khtml-user-select": "none",
+		 "-moz-user-select": "none",
+		 "-ms-user-select": "none",
+		 "user-select": "none",
+	     });
+
+	     if (type != "inrule") {
+		 rectWidth = text.node.getBBox().width + 2 * padding;
+		 rectHeight = text.node.getBBox().height + 2 * padding;
+		 rect.attr("width", rectWidth);
+		 rect.attr("height", rectHeight);
+		 rect.attr("fill", colorBack);
+		 var result = paper.set([rect, text]);
+		 if (type == "assumption" && first.first == 1) {
+		     allassumptions.push( { container: result, rectangle: rect, formula : form } );
+		 }
+		 var bbox = result.getBBox();
+		 if (bbox.y + bbox.height > paperHeight) {
+		     paperHeight += bbox.height;
+		     paper.setSize("100%", paperHeight);
+		 }
+		 return result;
+	     } else {
+		 return text;
+	     }
+	 };
+
+	 function appearsIn(v, f) {
+	     switch (f.type) {
+		 case "implies":
+		 case "and":
+		 case "or":
+		     return appearsIn(v, f.form1) ||
+			    appearsIn(v, f.form2);
+		 case "not":
+		     return appearsIn(v, f.form1);
+		 case "var":
+		 case "bot":
+		     return false;
+		 case "metavar":
+		     return v == f.name;
+	     }
+	     alert("error in appearsIn");
+	 }
+
+	 function singleSubst(v, f) {
+	     var result = {};
+	     result[v] = f;
+	     return result;
+	 }
+
+	 function modSigma(sigma, v, f) {
+	     var result = {};
+	     for (var key in sigma) {
+		 if (sigma.hasOwnProperty(key)) {
+		     if (v == key) {
+			 alert("error in modSigma");
+		     }
+		     result[key] = applySubstFormula(sigma[key], singleSubst(v, f));
+		 }
+	     }
+	     result[v] = f;
+	     return result;
+	 }
+
+	 function computeMguHelper(lf1, lf2, sigma) {
+	     if (lf1.length != lf2.length) {
+		 alert("error in mgu");
+	     }
+	     while (lf1.length > 0) {
+		 var f1 = lf1.shift();
+		 var f2 = lf2.shift();
+		 if (f1.type == "metavar") {
+		     if (f2.type == "metavar") {
+			 sigma = modSigma(sigma, f1.name, f2);
+			 for (var i = 0; i < lf1.length; ++i) {
+			     lf1[i] = applySubstFormula(lf1[i], singleSubst(f1.name, f2));
+			     lf2[i] = applySubstFormula(lf2[i], singleSubst(f1.name, f2));
+			 }
+		     } else if (appearsIn(f1.name, f2)) {
+			 return null;
+		     } else {
+			 sigma = modSigma(sigma, f1.name, f2);
+			 for (var i = 0; i < lf1.length; ++i) {
+			     lf1[i] = applySubstFormula(lf1[i], singleSubst(f1.name, f2));
+			     lf2[i] = applySubstFormula(lf2[i], singleSubst(f1.name, f2));
+			 }
+		     }
+		 } else if (f1.type == "and") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "and") {
+			 lf1.push(f1.form1);
+			 lf1.push(f1.form2);
+			 lf2.push(f2.form1);
+			 lf2.push(f2.form2);
+		     } else {
+			 return null;
+		     }
+		 } else if (f1.type == "implies") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "implies") {
+			 lf1.push(f1.form1);
+			 lf1.push(f1.form2);
+			 lf2.push(f2.form1);
+			 lf2.push(f2.form2);
+		     } else {
+			 return null;
+		     }
+		 } else if (f1.type == "or") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "or") {
+			 lf1.push(f1.form1);
+			 lf1.push(f1.form2);
+			 lf2.push(f2.form1);
+			 lf2.push(f2.form2);
+		     } else {
+			 return null;
+		     }
+		 } else if (f1.type == "not") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "not") {
+			 lf1.push(f1.form1);
+			 lf2.push(f2.form1);
+		     } else {
+			 return null;
+		     }
+		 } else if (f1.type == "var") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "var") {
+			 if (f1.name != f2.name) {
+			     return null;
+			 }
+		     } else {
+			 return null;
+		     }
+		 } else if (f1.type == "bot") {
+		     if (f2.type == "metavar") {
+			 lf1.push(f2);
+			 lf2.push(f1);
+		     } else if (f2.type == "bot") {
+			 // ok, do nothing
+		     } else {
+			 return null;
+		     }
+		 } else {
+		     alert("trouble in mgu");
+		 }
+	     }
+	     return sigma;
+	 }
+
+	 function computeMgu(f1, f2) {
+	     return computeMguHelper([f1], [f2], {});
+	 }
+
+	 function applySubstFormula(f, sigma) {
+	     if (f.type == "and" || f.type == "or" || f.type == "implies") {
+		 return {
+		     "type": f.type,
+		     "form1": applySubstFormula(f.form1, sigma),
+		     "form2": applySubstFormula(f.form2, sigma)
+		 };
+	     } else if (f.type == "not") {
+		 return {
+		     "type": f.type,
+		     "form1": applySubstFormula(f.form1, sigma)
+		 };
+	     } else if (f.type == "var" || f.type == "bot") {
+		 return f;
+	     } else if (f.type == "metavar") {
+		 if (f.name in sigma) {
+		     return sigma[f.name];
+		 } else {
+		     return f;
+		 } 
+	     }
+	     alert("error in applySubstFormula");
+	 }
+
+	 var freshCount = 0;
+
+	 function varsFormulaHelper(f, result) {
+	     if (f.type == "var" || f.type == "bot") {
+		 // no variable here, move on
+	     } else if (f.type == "and" || f.type == "or" || f.type == "implies") {
+		 varsFormulaHelper(f.form1, result);
+		 varsFormulaHelper(f.form2, result);
+	     } else if (f.type == "not") {
+		 varsFormulaHelper(f.form1, result);
+	     } else if (f.type == "metavar") {
+		 result.push(f.name);
+	     } else {
+		 alert("error in varsFormulaHelper");
+	     }
+	 }
+
+	 function varsFormula(f) {
+	     var result = [];
+	     varsFormulaHelper(f, result);
+	     return result;
+	 }
+
+	 function varsProofItemHelper(proofitem, result) {
+	     if (proofitem.type == "box") {
+		 for (var i = 0; i < proofitem.box.assumptions.length; ++i) {
+		     varsFormulaHelper(proofitem.box.assumptions[i], result);
+		 }
+		 for (var i = 0; i < proofitem.box.contents.length; ++i) {
+		     varsProofItemHelper(proofitem.box.contents[i], result);
+		 }
+	     } else if (proofitem.type == "formula") {
+		 varsFormulaHelper(proofitem.formula, result);
+	     } else {
+		 alert("unknown proofitem");
+	     }
+	 }
+
+	 function varsProofItem(proofitem) {
+	     var result = [];
+	     varsProofItemHelper(f, result);
+	     return result;
+	 }
+
+	 function applySubstFormulaArray(ar, sigma) {
+	     var result = [];
+	     for (var i = 0; i < ar.length; ++i) {
+		 result.push(applySubstFormula(ar[i], sigma));
+	     }
+	     return result;
+	 }
+
+	 function applySubstProofItem(proofitem, sigma) {
+	     if (proofitem.type == "formula") {
+		 return {
+		     type: "formula",
+		     why: proofitem.why,
+		     formula: applySubstFormula(proofitem.formula, sigma)
+		 }
+	     } else if (proofitem.type == "box") {
+		 return {
+		     type: "box",
+		     box: {
+			 assumptions: applySubstFormulaArray(proofitem.box.assumptions,
+							     sigma),
+			 contents: applySubstProofItemArray(proofitem.box.contents,
+							    sigma)
+		     }
+		 }
+	     } else {
+		 alert("error in applySubstProofItem");
+	     }
+	 }
+
+	 function applySubstProofItemArray(ar, sigma) {
+	     var result = [];
+	     for (var i = 0; i < ar.length; ++i) {
+		 result.push(applySubstProofItem(ar[i], sigma));
+	     }
+	     return result;
+	 }
+
+	 function freshRule(rule) {
+	     var v = varsFormula(rule.conclusion);
+	     for (var i = 0; i < rule.hypotheses.length; ++i) {
+		 varsProofItemHelper(rule.hypotheses[i], v);
+	     }
+	     var nv = {};
+	     for (var i = 0; i < v.length; ++i) {
+		 nv[v[i]] = { type: "metavar", name: "?" + freshCount };
+		 freshCount++;
+	     }
+	     //	for (var k in nv) {
+	     //		if (nv.hasOwnProperty(k)) {
+	     //			alert(k + " ---- " + nv[k].name);
+	     //		}
+	     //	}
+	     return {
+		 name: rule.name,
+		 conclusion: applySubstFormula(rule.conclusion, nv),
+		 hypotheses: applySubstProofItemArray(rule.hypotheses, nv)
+	     };
+	 }
+
+	 function applyHypothesis(formula) {
+	     applyRule({ name: "hypothesis", hypotheses: [], conclusion: formula });
+	 }
+
+	 function applySubstProofBox(proofbox, sigma) {
+	     for (var i = 0; i < proofbox.contents.length; ++i) {
+		 proofbox.contents[i] = applySubstProofItem(proofbox.contents[i], sigma);
+	     }
+	 }
+
+	 function applyFirst(rule, proofbox) {
+	     for (var i = 0; i < proofbox.contents.length; ++i) {
+		 var pi = proofbox.contents[i];
+		 if (pi.type == "formula" && pi.why == null) {
+		     mgu = computeMgu(rule.conclusion, pi.formula);
+		     if (mgu != null) {
+			 proofbox.contents[i].why = rule.name;
+			 for (var i = rule.hypotheses.length - 1; i >= 0; --i) {
+			     var newpi = applySubstProofItem(rule.hypotheses[i], mgu);
+			     proofbox.contents.splice(0, 0, newpi);
+			 }
+			 applySubstProofBox(mainproofbox, mgu);
+			 redrawEverything();
+		     } else {
+			 alert("Cannot apply this rule!");
+			 removeUndoPoint();
+		     }
+		     return 1;
+		 } else if (pi.type == "box") {
+		     if (applyFirst(rule, pi.box)) {
+			 return 1;
+		     }
+		 }
+	     }
+	     return 0;
+	 }
+
+	 function applyRule(rule) {
+	     createUndoPoint();
+	     //	rule = freshRule(rule); -- freshRule is now called only for deduction rules on the bottom
+	     // hypotheses, which are encoded as rules with no hypotheses :D, are not renamed since
+	     // they may already contain meta-variables which were freshly generated previously
+	     applyFirst(rule, mainproofbox);
+	 }
+
+	 function allrects(set, color) {
+	     set.forEach(function (r) {
+		 if (r.type == "rect") {
+		     r.attr({ fill : color });
+		 } else if (r.type == "set") {
+		     allrects(r, color);
+		 }
+	     });
+	 }
+
+	 Raphael.fn.rule = function(x, y, rule) {
+	     var rect = paper.rect(x, y, 10, 10, rounding);
+	     rect.attr("fill", "orange");
+	     rect.attr("cursor", "pointer");
+
+	     var name = rule.name;
+	     var hypos = rule.hypotheses;
+	     var concl = rule.conclusion;
+
+	     var nodes = [];
+
+	     var oldx = x, height = 0;
+	     var hw = 0;
+	     var nodesHypotheses = [];
+	     for (var i = 0; i < hypos.length; ++i) {
+		 var f = paper.proofitem(x + padding, y + padding, hypos[i], "inrule", { first : 0 }, 0);
+		 nodes.push(f);
+		 x += f.getBBox().width + padding;
+		 hw += f.getBBox().width;
+		 if (f.getBBox().height > height) {
+		     height = f.getBBox().height;
+		 }
+		 nodesHypotheses.push(f);
+	     }
+	     y += height + padding + padding;
+	     x = oldx;
+	     var nodeConclusion = paper.formula(x + padding, y, concl, "inrule", 0);
+	     nodes.push(nodeConclusion);
+	     var cw = nodeConclusion.getBBox().width;
+	     var set = paper.set(nodes);
+	     var b = set.getBBox();
+	     nodeConclusion.attr("x", x + padding + (b.width - cw) / 2);
+	     //	if (nodesHypotheses.length == 1) {
+	     //		nodesHypotheses[0].attr("x", x + padding + (b.width - hw) / 2);
+	     //	}
+	     //	} else {
+	     //		skip = b.width - hw;
+	     //		skip /= nodesHypotheses.length - 1;
+	     //		var dx = 0;
+	     //		for (var i = 0; i < nodesHypotheses.length; ++i) {
+	     //			var nw = nodesHypotheses[i].getBBox().width;
+	     //			nodesHypotheses[i].attr("x", x + dx + padding + i * skip);
+	     //			dx += nw;
+	     //		}
+	     //	}
+	     rect.attr("width", b.width + 2 * padding);
+	     rect.attr("height", b.height + 2 * padding);
+	     //	var line = paper.path(["M", x + padding, y - padding / 2,
+	     //		"L", x + padding + b.width, y - padding / 2 ]).attr("cursor", "pointer");
+	     //	nodes.push(line);
+	     //	set.push(line);
+	     set.push(rect);
+
+	     set.mouseover(function(e) {
+		 allrects(set, "red");
+		 //		rect.attr("fill", "red");
+	     }).mouseout(function(e) {
+		 allrects(set, "orange");
+		 //		rect.attr("fill", "orange");
+	     }).mousedown(function(e) {
+		 applyRule(freshRule(rule));
+	     });
+
+	     var bbox = set.getBBox();
+	     if (bbox.y + bbox.height > paperHeight) {
+		 paperHeight += bbox.height;
+		 paper.setSize("100%", paperHeight);
+	     }
+	     return set;
+	 };
+
+	 Raphael.fn.centerRect = function( cx, cy, width, height ) {
+	     var xLeftTop = cx - (width / 2);
+	     var yLeftTop = cy - (height / 2);
+	     this.rectObj = paper.rect( xLeftTop, yLeftTop, width, height );
+	     return this.rectObj;
+	 };
+
+	 var paperHeight = 640;
+	 var paper = Raphael("container", "100%", paperHeight);
+
+	 function removeAllElements(set) {
+	     if (set.type == "set") {
+		 set.forEach(function (s) {
+		     removeAllElements(s);
+		 });
+	     } else {
+		 set.remove();
+	     }
+	 }
+
+	 var undoBuffer = [];
+	 var redoBuffer = [];
+	 var oldredo = [];
+
+	 function createUndoPoint() {
+	     oldredo = redoBuffer;
+	     redoBuffer = [];
+	     undoBuffer.push(jQuery.extend(true, {}, mainproofbox));
+	 }
+
+	 function removeUndoPoint() {
+	     redoBuffer = oldredo;
+	     undoBuffer.pop();
+	 }
+
+	 function undoEnabled() {
+	     return undoBuffer.length != 0;
+	 }
+
+	 function performUndo() {
+	     if (undoEnabled()) {
+		 redoBuffer.push(jQuery.extend(true, {}, mainproofbox));
+		 mainproofbox = undoBuffer.pop();
+		 redrawEverything();
+	     }
+	 }
+
+	 function redoEnabled() {
+	     return redoBuffer.length != 0;
+	 }
+
+	 function performRedo() {
+	     if (redoEnabled()) {
+		 undoBuffer.push(jQuery.extend(true, {}, mainproofbox));
+		 mainproofbox = redoBuffer.pop();
+		 redrawEverything();
+	     }
+	 }
+
+	 var done = 0;
+
+	 function nextLevelEnabled() {
+	     return true;
+	     //	return (done == 1) && (currentExample < examples.length - 1);
+	 }
+
+	 function goToNextLevel() {
+	     if (nextLevelEnabled()) {
+		 if (currentExample < examples.length - 1) {
+		     currentExample++;
+		     done = 0;
+		     loadExample(currentExample);
+		 }
+	     } else {
+		 if (done == 1) {
+		     alert("You have already finished all levels. Congratulations!");
+		 } else {
+		     alert("Please finish current level before moving on!");
+		 }
+	     }
+	 }
+
+	 function drawEverything() {
+	     var all = paper.rect(0, 0, "100%", "100%", 16).attr("fill", "Snow");
+
+	     var undo = paper.rect(padding, padding, 100, 16, rounding);
+	     undo.attr("fill", "lightblue").attr("cursor", "pointer");
+	     var textUndo = lefttext(padding * 2, padding * 3.5, "UNDO").attr("cursor", "pointer");
+	     undo.attr("width", textUndo.getBBox().width * 1 + 2 * padding);
+	     undo.attr("height", textUndo.getBBox().height * 2 + padding);
+	     var undoset = paper.set([ textUndo, undo ]);
+	     undoset.mouseover(function(e) {
+		 if (undoEnabled()) {
+		     undo.attr("fill", "lightyellow");
+		 }
+	     }).mouseout(function(e) {
+		 undo.attr("fill", "lightblue");
+	     }).mousedown(function(e) {
+		 performUndo();
+	     });
+
+	     var x = textUndo.getBBox().width * 1 + 3 * padding;
+
+	     var redo = paper.rect(x + padding, padding, 100, 16, rounding);
+	     redo.attr("fill", "lightblue").attr("cursor", "pointer");
+	     var textRedo = lefttext(x + padding * 2, padding * 3.5, "REDO").attr("cursor", "pointer");
+	     redo.attr("width", textRedo.getBBox().width * 1 + 2 * padding);
+	     redo.attr("height", textRedo.getBBox().height * 2 + padding);
+	     var redoset = paper.set([ textRedo, redo ]);
+	     redoset.mouseover(function(e) {
+		 if (redoEnabled()) {
+		     redo.attr("fill", "lightyellow");
+		 }
+	     }).mouseout(function(e) {
+		 redo.attr("fill", "lightblue");
+	     }).mousedown(function(e) {
+		 performRedo();
+	     });
+
+	     x += textRedo.getBBox().width * 1 + 3 * padding;
+
+	     var t = lefttext(x + padding, padding * 3.5, "Level: " + (currentExample + 1) + "/" + examples.length);
+
+	     var nextlevel = paper.rect(x + padding, padding, 100, 16, rounding);
+	     nextlevel.attr("fill", "lightblue").attr("cursor", "pointer");
+	     var textNextLevel = lefttext(x + padding * 2, padding * 3.5, "NEXT LEVEL").attr("cursor", "pointer");
+	     var wnl = textNextLevel.getBBox().width * 1 + 2 * padding;
+	     nextlevel.attr("width", wnl);
+	     nextlevel.attr("height", textNextLevel.getBBox().height * 2 + padding);
+	     nextlevel.attr("x", usefulWidth - padding - wnl);
+	     textNextLevel.attr("x", usefulWidth - wnl);
+	     var nextlevelset = paper.set([ textNextLevel, nextlevel ]);
+	     nextlevelset.mouseover(function(e) {
+		 if (nextLevelEnabled()) {
+		     nextlevel.attr("fill", "lightyellow");
+		 }
+	     }).mouseout(function(e) {
+		 nextlevel.attr("fill", "lightblue");
+	     }).mousedown(function(e) {
+		 goToNextLevel();
+	     });
+
+	     var y = padding * 2 + textUndo.getBBox().height * 2;
+
+	     var myfirst = { first : 1 };
+	     var allassumptions = [];
+	     var box = paper.proofbox(padding, y + padding, mainproofbox,
+				      "inproof", myfirst, allassumptions);
+	     for (var i = 0; i < allassumptions.length; ++i) {
+	         var doit = function(result, rect, form) {
+		     result.mouseover(function(e) {
+			 rect.attr("fill", "red");
+	             }).mouseout(function(e) {
+			 rect.attr("fill", "gold");
+	             }).mousedown(function(e) {
+			 applyHypothesis(form);
+	             });
+		 };
+		 var result = allassumptions[i].container;
+		 var rect = allassumptions[i].rectangle;
+		 var form = allassumptions[i].formula;
+		 doit(result, rect, form);
+	     }
+	     done = myfirst.first == 1;
+	     y += box.getBBox().height + padding * 2;
+	     x = 0;
+	     var currentRowHeight = 0;
+	     for (var i = 0; i < rules.length; ++i) {
+		 var r = paper.rule(x + padding, y + padding, rules[i]);
+		 x += r.getBBox().width + padding;
+		 if (x > usefulWidth - padding) {
+		     x = 0;
+		     y += currentRowHeight + padding;
+		     removeAllElements(r);
+		     var r = paper.rule(x + padding, y + padding, rules[i]);
+		     x += r.getBBox().width + padding;
+		     currentRowHeight = 0;
+		 }
+		 if (r.getBBox().height > currentRowHeight) {
+		     currentRowHeight = r.getBBox().height;
+		 }
+	     }
+	 }
+
+	 function redrawEverything() {
+	     paper.clear();
+	     drawEverything();
+	 }
+
+	 function loadExample(currentExample) {
+	     mainproofbox = examples[currentExample];
+	     redrawEverything();
+	     undoBuffer = [];
+	     redoBuffer = [];
+	     oldredo = [];
+	 }
+
+	 loadExample(currentExample);
+
+	</script>
 
 </body>
 </html>
