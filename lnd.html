@@ -1536,8 +1536,7 @@
 	 var done = 0;
 
 	 function nextLevelEnabled() {
-	     return true;
-	     //	return (done == 1) && (currentExample < examples.length - 1);
+	     return (done == 1) && (currentExample < examples.length - 1);
 	 }
 
 	 function goToNextLevel() {
