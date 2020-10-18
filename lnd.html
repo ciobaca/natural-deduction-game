@@ -1596,25 +1596,6 @@
 
 	     var t = lefttext(x + padding, padding * 3.5, "Level: " + (currentExample + 1) + "/" + examples.length);
 
-	     var nextlevel = paper.rect(x + padding, padding, 100, 16, rounding);
-	     nextlevel.attr("fill", "lightblue").attr("cursor", "pointer");
-	     var textNextLevel = lefttext(x + padding * 2, padding * 3.5, "NEXT LEVEL").attr("cursor", "pointer");
-	     var wnl = textNextLevel.getBBox().width * 1 + 2 * padding;
-	     nextlevel.attr("width", wnl);
-	     nextlevel.attr("height", textNextLevel.getBBox().height * 2 + padding);
-	     nextlevel.attr("x", usefulWidth - padding - wnl);
-	     textNextLevel.attr("x", usefulWidth - wnl);
-	     var nextlevelset = paper.set([ textNextLevel, nextlevel ]);
-	     nextlevelset.mouseover(function(e) {
-		 if (nextLevelEnabled()) {
-		     nextlevel.attr("fill", "lightyellow");
-		 }
-	     }).mouseout(function(e) {
-		 nextlevel.attr("fill", "lightblue");
-	     }).mousedown(function(e) {
-		 goToNextLevel();
-	     });
-
 	     var y = padding * 2 + textUndo.getBBox().height * 2;
 
 	     var myfirst = { first : 1 };
@@ -1623,37 +1604,58 @@
 				      "inproof", myfirst, allassumptions);
 	     for (var i = 0; i < allassumptions.length; ++i) {
 	         var doit = function(result, rect, form) {
-		     result.mouseover(function(e) {
-			 rect.attr("fill", "red");
-	             }).mouseout(function(e) {
-			 rect.attr("fill", "gold");
-	             }).mousedown(function(e) {
-			 applyHypothesis(form);
-	             });
-		 };
-		 var result = allassumptions[i].container;
-		 var rect = allassumptions[i].rectangle;
-		 var form = allassumptions[i].formula;
-		 doit(result, rect, form);
+			     result.mouseover(function(e) {
+				 rect.attr("fill", "red");
+		             }).mouseout(function(e) {
+				 rect.attr("fill", "gold");
+		             }).mousedown(function(e) {
+				 applyHypothesis(form);
+		             });
+			 };
+			 var result = allassumptions[i].container;
+			 var rect = allassumptions[i].rectangle;
+			 var form = allassumptions[i].formula;
+			 doit(result, rect, form);
 	     }
 	     done = myfirst.first == 1;
+
+	     var nextlevel = paper.rect(x + padding, padding, 100, 16, rounding);
+	     nextlevel.attr("fill", done ? "lightgreen" : "lightgray").attr("cursor", done ? "pointer" : "not-allowed");
+	     var textNextLevel = lefttext(x + padding * 2, padding * 3.5, "NEXT LEVEL").attr("cursor", done ? "pointer" : "not-allowed");
+	     var wnl = textNextLevel.getBBox().width * 1 + 2 * padding;
+	     nextlevel.attr("width", wnl);
+	     nextlevel.attr("height", textNextLevel.getBBox().height * 2 + padding);
+	     nextlevel.attr("x", usefulWidth - padding - wnl);
+
+	     textNextLevel.attr("x", usefulWidth - wnl);
+	     var nextlevelset = paper.set([ textNextLevel, nextlevel ]);
+	     nextlevelset.mouseover(function(e) {
+			 if (nextLevelEnabled()) {
+			     nextlevel.attr("fill", "lightyellow");
+			 }
+	     }).mouseout(function(e) {
+			 nextlevel.attr("fill", done ? "lightgreen" : "lightgray");
+	     }).mousedown(function(e) {
+			 goToNextLevel();
+	     });
+
 	     y += box.getBBox().height + padding * 2;
 	     x = 0;
 	     var currentRowHeight = 0;
 	     for (var i = 0; i < rules.length; ++i) {
-		 var r = paper.rule(x + padding, y + padding, rules[i]);
-		 x += r.getBBox().width + padding;
-		 if (x > usefulWidth - padding) {
-		     x = 0;
-		     y += currentRowHeight + padding;
-		     removeAllElements(r);
-		     var r = paper.rule(x + padding, y + padding, rules[i]);
-		     x += r.getBBox().width + padding;
-		     currentRowHeight = 0;
-		 }
-		 if (r.getBBox().height > currentRowHeight) {
-		     currentRowHeight = r.getBBox().height;
-		 }
+			 var r = paper.rule(x + padding, y + padding, rules[i]);
+			 x += r.getBBox().width + padding;
+			 if (x > usefulWidth - padding) {
+			     x = 0;
+			     y += currentRowHeight + padding;
+			     removeAllElements(r);
+			     var r = paper.rule(x + padding, y + padding, rules[i]);
+			     x += r.getBBox().width + padding;
+			     currentRowHeight = 0;
+			 }
+			 if (r.getBBox().height > currentRowHeight) {
+			     currentRowHeight = r.getBBox().height;
+			 }
 	     }
 	 }
 
