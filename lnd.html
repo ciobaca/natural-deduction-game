@@ -589,7 +589,7 @@
 	 ];
 
 	 var maxExample = 32;
-	 var currentExample = 0;
+	 var currentExample = parseInt(localStorage.getItem('currentExample')) || 0;
 
 	 var mainproofbox = example32;
 
@@ -1663,6 +1663,7 @@
 	 }
 
 	 function loadExample(currentExample) {
+	     localStorage.setItem('currentExample', currentExample);
 	     mainproofbox = examples[currentExample];
 	     redrawEverything();
 	     undoBuffer = [];
